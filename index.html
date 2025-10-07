@@ -8,16 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
         body {
-            margin: 0;
+            margin: 0 auto;
             padding: 0;
             font-family: 'Indie Flower', cursive;
-            background: url('picture/bg.PNG') no-repeat center center fixed;
+            background: url('bg.PNG') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
             min-height: 100vh;
-            color: #3e2f1c;
+            max-width: 1200px;
             animation: bgMove 10s ease-in-out infinite alternate;
         }
 
@@ -61,7 +62,7 @@
             border: 3px solid #8b5e3c;
             padding: 15px 25px;
             border-radius: 15px;
-            margin-top: 20px;
+            margin-top: 10px;
             gap: 20px;
             color: #3e2f1c;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -99,8 +100,23 @@
         .welcome-text {
             font-size: 2.5em;
             text-align: center;
-            margin-top: 150px;
+            margin-top: 45px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: floatUpDown 10s ease-in-out infinite;
+        }
+
+        .chat-bubble {
+            position: relative;
+            margin: 50px 0 0 -30%;
+            width: 40%;
+            font-size: 3.2vw;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 15px 30px;
+            color: #3e2f1c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: bgMove 10s ease-in-out infinite alternate;
+            animation: floatUpDown 10s ease-in-out infinite;
         }
 
         @media (max-width: 600px) {
@@ -127,6 +143,20 @@
                 background-position: center 55%;
             }
         }
+
+        @keyframes floatUpDown {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -134,19 +164,19 @@
 
     <div class="scroll-container">
         <div class="scroll-images" id="scrollImages">
-            <img src="picture/wing.jpg" alt="Wing 1">
-            <img src="picture/wing.jpg" alt="Wing 2">
-            <img src="picture/wing.jpg" alt="Wing 3">
-            <img src="picture/wing.jpg" alt="Wing 4">
-            <img src="picture/wing.jpg" alt="Wing 5">
-            <img src="picture/wing.jpg" alt="Wing 6">
+            <img src="wing.jpg" alt="Wing 1">
+            <img src="wing.jpg" alt="Wing 2">
+            <img src="wing.jpg" alt="Wing 3">
+            <img src="wing.jpg" alt="Wing 4">
+            <img src="wing.jpg" alt="Wing 5">
+            <img src="wing.jpg" alt="Wing 6">
 
-            <img src="picture/wing.jpg" alt="Wing 1">
-            <img src="picture/wing.jpg" alt="Wing 2">
-            <img src="picture/wing.jpg" alt="Wing 3">
-            <img src="picture/wing.jpg" alt="Wing 4">
-            <img src="picture/wing.jpg" alt="Wing 5">
-            <img src="picture/wing.jpg" alt="Wing 6">
+            <img src="wing.jpg" alt="Wing 1">
+            <img src="wing.jpg" alt="Wing 2">
+            <img src="wing.jpg" alt="Wing 3">
+            <img src="wing.jpg" alt="Wing 4">
+            <img src="wing.jpg" alt="Wing 5">
+            <img src="wing.jpg" alt="Wing 6">
         </div>
     </div>
 
@@ -164,6 +194,14 @@
     <div class="welcome-text">
         Welcome to SSC's World!
     </div>
+
+    <div class="chat-bubble">
+        This is my favorite song: <strong>Snowman</strong>.<br>
+        Performed by <strong>Sungchan</strong>.<br>
+        Welcome to my personal website, where you can see some of my covers and photos related to him! ~
+        <div class="chat-tail"></div>
+    </div>
+
 
     <audio id="audioPlayer" src="snowman.mp3" autoplay loop></audio>
 
@@ -190,4 +228,5 @@
     </script>
 
 </body>
+
 </html>
