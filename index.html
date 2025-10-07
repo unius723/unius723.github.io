@@ -3,45 +3,59 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SSC's World</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            margin: 0 auto;
+            margin: 0;
             padding: 0;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             font-family: 'Indie Flower', cursive;
-            background: url('picture/bg.PNG') no-repeat center center fixed;
+           
+        }
+
+        .phone-container {
+            width: 375px;
+            height: 667px;
+            background: url('picture/bg.PNG') no-repeat center center;
             background-size: cover;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            max-width: 1200px;
+            overflow: hidden;
+            border: 16px solid #462610b6;
+            border-radius: 36px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            position: relative;
             animation: bgMove 10s ease-in-out infinite alternate;
+            
         }
 
         .scroll-container {
             width: 100%;
             overflow: hidden;
-            margin-top: 20px;
-            padding: 10px 0;
+            margin-top: 10px;
+            padding: 5px 0;
         }
 
         .scroll-images {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             animation: scroll 15s linear infinite;
         }
 
         .scroll-images img {
-            width: 120px;
-            height: 120px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
-            border: 5px solid #d2b48c;
-            border-radius: 10px;
+            border: 3px solid #d2b48c;
+            border-radius: 8px;
             flex-shrink: 0;
         }
 
@@ -60,88 +74,73 @@
             align-items: center;
             justify-content: center;
             background-color: #d2b48c;
-            border: 3px solid #8b5e3c;
-            padding: 15px 25px;
-            border-radius: 15px;
+            border: 2px solid #8b5e3c;
+            padding: 10px 20px;
+            border-radius: 12px;
             margin-top: 10px;
-            gap: 20px;
+            gap: 15px;
             color: #3e2f1c;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            font-size: 0.9em;
         }
 
         .play-button {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #8b5e3c;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #8b5e3c;
             border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, #f0d9a6, #c88f55);
             cursor: pointer;
-            position: relative;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
         }
 
         .play-button:hover {
             transform: scale(1.15);
-            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.35), inset 0 -2px 5px rgba(0, 0, 0, 0.2);
-            background: radial-gradient(circle at 30% 30%, #f2e0b3, #b8773f);
         }
 
         .divider {
             width: 2px;
-            height: 40px;
+            height: 30px;
             background-color: #8b5e3c;
         }
 
-        .song-info {
-            font-size: 1.1em;
-        }
-
         .welcome-text {
-            font-size: 2.5em;
+            font-size: 1.4em;
             text-align: center;
-            margin-top: 45px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             animation: floatUpDown 10s ease-in-out infinite;
         }
 
         .chat-bubble {
             position: relative;
-            margin: 50px 0 0 -30%;
-            width: 40%;
-            font-size: 3.2vw;
+            margin: 30px 0 0 -30%;
+            width: 50%;
+            font-size: 0.9em;
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 15px 30px;
+            border-radius: 15px;
+            padding: 10px 15px;
             color: #3e2f1c;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            animation: bgMove 10s ease-in-out infinite alternate;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
             animation: floatUpDown 10s ease-in-out infinite;
         }
 
-        @media (max-width: 600px) {
-            .scroll-images img {
-                width: 80px;
-                height: 80px;
-            }
-
-            .welcome-text {
-                font-size: 1.8em;
-            }
-
-            .song-info {
-                font-size: 1em;
-            }
+        audio {
+            display: none;
         }
 
         @keyframes bgMove {
             0% {
-                background-position: center 45%;
+                background-position: center 20%;
             }
 
             100% {
-                background-position: center 55%;
+                background-position: center 50%;
             }
         }
 
@@ -163,50 +162,49 @@
 
 <body>
 
-    <div class="scroll-container">
-        <div class="scroll-images" id="scrollImages">
-            <img src="picture/wing.jpg" alt="Wing 1">
-            <img src="picture/wing.jpg" alt="Wing 2">
-            <img src="picture/wing.jpg" alt="Wing 3">
-            <img src="picture/wing.jpg" alt="Wing 4">
-            <img src="picture/wing.jpg" alt="Wing 5">
-            <img src="picture/wing.jpg" alt="Wing 6">
+    <div class="phone-container">
+        <div class="scroll-container">
+            <div class="scroll-images" id="scrollImages">
+                <img src="picture/wing.jpg" alt="Wing 1">
+                <img src="picture/wing.jpg" alt="Wing 2">
+                <img src="picture/wing.jpg" alt="Wing 3">
+                <img src="picture/wing.jpg" alt="Wing 4">
+                <img src="picture/wing.jpg" alt="Wing 5">
+                <img src="picture/wing.jpg" alt="Wing 6">
 
-            <img src="picture/wing.jpg" alt="Wing 1">
-            <img src="picture/wing.jpg" alt="Wing 2">
-            <img src="picture/wing.jpg" alt="Wing 3">
-            <img src="picture/wing.jpg" alt="Wing 4">
-            <img src="picture/wing.jpg" alt="Wing 5">
-            <img src="picture/wing.jpg" alt="Wing 6">
+                <img src="picture/wing.jpg" alt="Wing 1">
+                <img src="picture/wing.jpg" alt="Wing 2">
+                <img src="picture/wing.jpg" alt="Wing 3">
+                <img src="picture/wing.jpg" alt="Wing 4">
+                <img src="picture/wing.jpg" alt="Wing 5">
+                <img src="picture/wing.jpg" alt="Wing 6">
+            </div>
+
         </div>
-    </div>
 
-    <!-- HTML -->
-    <div class="player">
-        <button class="play-button" id="playPause">
-            <i id="playIcon" class="fas fa-play"></i>
-        </button>
-        <div class="divider"></div>
-        <div class="song-info">
-            <div>Song Name: Snowman</div>
-            <div>Artist: Sungchan</div>
+        <div class="player">
+            <button class="play-button" id="playPause">
+                <i id="playIcon" class="fas fa-play"></i>
+            </button>
+            <div class="divider"></div>
+            <div class="song-info">
+                <div>Song Name: Snowman</div>
+                <div>Artist: Sungchan</div>
+            </div>
         </div>
+
+        <div class="welcome-text">
+            Welcome to SSC's World!
+        </div>
+
+        <div class="chat-bubble">
+            This is one of my favorite song: <strong>Snowman</strong>,<br>
+            Performed by <strong>Sungchan</strong>.<br>
+            Welcome to my personal website, where you can see some of my covers and photos related to him! ~
+        </div>
+
+        <audio id="audioPlayer" src="snowman.mp3" autoplay loop></audio>
     </div>
-
-
-    <div class="welcome-text">
-        Welcome to SSC's World!
-    </div>
-
-    <div class="chat-bubble">
-        This is my favorite song: <strong>Snowman</strong>.<br>
-        Performed by <strong>Sungchan</strong>.<br>
-        Welcome to my personal website, where you can see some of my covers and photos related to him! ~
-        <div class="chat-tail"></div>
-    </div>
-
-
-    <audio id="audioPlayer" src="snowman.mp3" autoplay loop></audio>
 
     <script>
         const audio = document.getElementById('audioPlayer');
@@ -214,23 +212,18 @@
         const playIcon = document.getElementById('playIcon');
 
         window.addEventListener('load', () => {
-            audio.play().catch(() => {
-                playIcon.className = 'fas fa-play';
-            });
+            audio.play().catch(() => { playIcon.className = 'fas fa-play'; });
             playIcon.className = 'fas fa-pause';
         });
 
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
-                audio.play();
-                playIcon.className = 'fas fa-pause';
+                audio.play(); playIcon.className = 'fas fa-pause';
             } else {
-                audio.pause();
-                playIcon.className = 'fas fa-play';
+                audio.pause(); playIcon.className = 'fas fa-play';
             }
         });
     </script>
-
 
 </body>
 
