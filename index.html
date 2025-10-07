@@ -1,74 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>unius723 page</title>
+    <title>SSC's World</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('picture/bg.PNG') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-            color: #333;
+            min-height: 100vh;
+            color: #3e2f1c;
+            animation: bgMove 10s ease-in-out infinite alternate;
         }
 
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #2c3e50;
+        .scroll-container {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 20px;
+            padding: 10px 0;
         }
 
-        p {
-            font-size: 1.2em;
-            color: #555;
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 30px;
+        .scroll-images {
+            display: flex;
+            gap: 15px;
+            animation: scroll 20s linear infinite;
         }
 
-        a.button {
-            text-decoration: none;
-            background-color: #b0b0b0;
+        .scroll-images img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 5px solid #d2b48c;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .player {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #d2b48c;
+            border: 3px solid #8b5e3c;
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            gap: 20px;
+            color: #3e2f1c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-button {
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            background-color: #c9a66b;
             color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 1em;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        a.button:hover {
-            background-color:  #8a8a8a;
-            transform: translateY(-3px);
+        .play-button:hover {
+            background-color: #b88a4b;
+            transform: scale(1.1);
         }
 
-        footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #777;
+        .divider {
+            width: 2px;
+            height: 40px;
+            background-color: #8b5e3c;
+        }
+
+        .song-info {
+            font-size: 1.1em;
+        }
+
+        .welcome-text {
+            font-size: 2.5em;
+            text-align: center;
+            margin-top: 150px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2em; }
-            p { font-size: 1em; }
-            a.button { padding: 10px 20px; }
+            .scroll-images img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .welcome-text {
+                font-size: 1.8em;
+            }
+
+            .song-info {
+                font-size: 1em;
+            }
+        }
+
+        @keyframes bgMove {
+            0% {
+                background-position: center 45%;
+            }
+
+            100% {
+                background-position: center 55%;
+            }
         }
     </style>
 </head>
-<body>
-    <h1>Hey</h1>
-    <p>Welcome to my personal website. Here you can find my projects, resume, and blog posts:)</p>
-    <a href="#projects" class="button">View My Projects</a>
 
-    <footer>
-        &copy; 2025 unius723. All rights reserved.
-    </footer>
+<body>
+
+    <div class="scroll-container">
+        <div class="scroll-images" id="scrollImages">
+            <img src="picture/wing.jpg" alt="Wing 1">
+            <img src="picture/wing.jpg" alt="Wing 2">
+            <img src="picture/wing.jpg" alt="Wing 3">
+            <img src="picture/wing.jpg" alt="Wing 4">
+            <img src="picture/wing.jpg" alt="Wing 5">
+            <img src="picture/wing.jpg" alt="Wing 6">
+
+            <img src="picture/wing.jpg" alt="Wing 1">
+            <img src="picture/wing.jpg" alt="Wing 2">
+            <img src="picture/wing.jpg" alt="Wing 3">
+            <img src="picture/wing.jpg" alt="Wing 4">
+            <img src="picture/wing.jpg" alt="Wing 5">
+            <img src="picture/wing.jpg" alt="Wing 6">
+        </div>
+    </div>
+
+    <div class="player">
+        <button class="play-button" id="playPause">▶</button>
+        <div class="divider"></div>
+        <div class="song-info">
+            <div>Song Name: Snowman</div>
+            <div>Artist: Sungchan</div>
+        </div>
+    </div>
+
+    <div class="welcome-text">
+        Welcome to SSC's World!
+    </div>
+
+    <audio id="audioPlayer" src="snowman.mp3" autoplay loop></audio>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playPause');
+
+        window.addEventListener('load', () => {
+            audio.play().catch(() => {
+                playBtn.textContent = '▶';
+            });
+            playBtn.textContent = '⏸';
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = '⏸';
+            } else {
+                audio.pause();
+                playBtn.textContent = '▶';
+            }
+        });
+    </script>
+
 </body>
 </html>
-
