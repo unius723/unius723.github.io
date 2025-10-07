@@ -3,15 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>unius723 page</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        h1 { color: #333; }
-        p { font-size: 18px; color: #555; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            color: #333;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        a.button {
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        a.button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            p { font-size: 1em; }
+            a.button { padding: 10px 20px; }
+        }
     </style>
 </head>
 <body>
     <h1>Hey</h1>
     <p>Welcome to my personal website. Here you can find my projects, resume, and blog posts:)</p>
+    <a href="#projects" class="button">View My Projects</a>
+
+    <footer>
+        &copy; 2025 unius723. All rights reserved.
+    </footer>
 </body>
 </html>
+
